@@ -1,0 +1,45 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    # specify the version you desire here
+    - image: circleci/node:8.9.1
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: git config user.name "shiopon01+circleci"
+      - run: git config user.email "shio.0323+circleci@gmail.com"
+      - run: npm install
+
+      - run: git reset --hard HEAD
+      - run: git checkout test-results;
+      - run: npm install
+      - run: npm test -- --coverage > result.txt
+      - run: echo $RANDOM >> result.txt
+
+      - run: git add result.txt package-lock.json
+      - run: git commit -m 'add test results'
+      - run: git push origin test-results;
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      # run tests!
+      # - run: yarn test
