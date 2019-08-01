@@ -13,6 +13,9 @@ defaults: &defaults
 jobs:
   build:
     <<: *defaults
+    branches:
+      only:
+        - master
     steps:
       - checkout
 
@@ -26,16 +29,15 @@ jobs:
       - run: git config user.name "shiopon01+circleci"
       - run: git config user.email "shio.0323+circleci@gmail.com"
       - run: npm install
-
+      - run: npm run build
+      - run: npm run export
       - run: git reset --hard HEAD
-      - run: git checkout test-results;
-      - run: npm install
-      - run: npm test -- --coverage > result.txt
-      - run: echo $RANDOM >> result.txt
-
-      - run: git add result.txt package-lock.json
-      - run: git commit -m 'add test results'
-      - run: git push origin test-results;
+      - run: git checkout gh-pages
+      - run: rm -rf index.html 404.html _next/
+      - run: mv -f out/* ./
+      - run: git add .
+      - run: git commit -m 'update by circleci'
+      - run: git push origin gh-pages
 
       - save_cache:
           paths:
