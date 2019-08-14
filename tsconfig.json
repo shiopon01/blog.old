@@ -19,13 +19,18 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "traceResolution": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "src/@types"
+    ]
   },
   "exclude": [
     "node_modules"
   ],
   "include": [
-    "**/*.ts",
-    "**/*.tsx"
+    "src/**/*.ts",
+    "src/**/*.tsx", "types/next-env.d.ts", "types/index.d.ts"
   ]
 }

@@ -30,7 +30,7 @@ jobs:
       - run: git reset --hard HEAD
       - run: git checkout gh-pages
       - run: rm -rf index.html 404.html _next/
-      - run: mv -f out/* ./
+      - run: mv -f src/out/* ./
       - run: git add .
       - run: git commit -m 'update by circleci'
       - run: git push origin gh-pages
