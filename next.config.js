@@ -1,12 +1,33 @@
+const fs = require("fs");
+const path = require("path");
+
+const dir = "./articles/";
+
 module.exports = {
   exportPathMap: function() {
-    return {
-      "/": { page: "/" },
-      "/about": { page: "/about" },
-      "/initial-props": { page: "/initial-props" },
+    const articles = fs.readdirSync(dir).map(filename => {
+      return {
+        filename
+        // mtime: fs.statSync(dir + filename).mtime
+      };
+    });
+    // articles.sort((a, b) => b.mtime - a.mtime)
 
-      "/page/1": { page: "/page/[pid]" },
-      "/entry/2019-01-01-test": { page: "/entry/[entry]" }
+    const pathMap = {
+      "/": { page: "/" },
+      "/about": { page: "/about" }
     };
+
+    // /page/[1..]
+    for (let i = 0; i < Math.ceil(articles.length / 5); i++) {
+      pathMap["/page/" + (i + 1)] = { page: "/page/[pid]" };
+    }
+
+    // /entry/[filename]
+    for (let article of articles) {
+      pathMap["/entry/" + path.basename(article.filename, path.extname(article.filename))] = { page: "/entry/[entry]" };
+    }
+
+    return pathMap;
   }
 };
