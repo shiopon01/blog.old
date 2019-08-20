@@ -1,5 +1,6 @@
 import * as React from "react";
 import Head from "next/head";
+import Container from '@material-ui/core/Container';
 
 import AppBar from "./AppBar";
 import Footer from "./Footer";
@@ -14,8 +15,10 @@ const Layout: React.FunctionComponent<Props> = ({ children, title = "Shiopon Blo
       <title>{title}</title>
     </Head>
     <AppBar />
-    {children}
-    <Footer />
+    <Container>
+      {children}
+      <Footer />
+    </Container>
   </React.Fragment>
 );
 

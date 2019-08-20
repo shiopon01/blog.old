@@ -11,18 +11,24 @@
     "type-check": "tsc"
   },
   "dependencies": {
-    "@material-ui/core": "latest",
-    "@material-ui/styles": "latest",
-    "clsx": "latest",
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "@material-ui/core": "^4.3.2",
+    "@material-ui/styles": "^4.3.0",
+    "clsx": "^1.0.4",
+    "highlight.js": "^9.15.10",
+    "next": "^9.0.4",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "remark": "^11.0.1",
+    "remark-react": "^6.0.0",
+    "remark-react-lowlight": "^0.7.0",
+    "unified": "^8.3.2"
   },
   "devDependencies": {
-    "@types/node": "^12.6.8",
-    "@types/next": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "typescript": "latest"
+    "@types/highlight.js": "^9.12.3",
+    "@types/next": "^8.0.6",
+    "@types/node": "^12.7.2",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "typescript": "^3.5.3"
   }
 }
