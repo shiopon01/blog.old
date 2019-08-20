@@ -5,7 +5,7 @@ export default function Footer() {
     <React.Fragment>
       <footer>
         <hr />
-        <span>I'm here to stay (Footer)</span>
+        <span>Copyright © 2019 shiopon01</span>
       </footer>
     </React.Fragment>
   );
