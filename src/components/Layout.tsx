@@ -2,14 +2,7 @@ import * as React from "react";
 import Link from "next/link";
 import Head from "next/head";
 
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-// import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
 
 import AppBar from "./AppBar";
 import Footer from "./Footer";
