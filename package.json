@@ -18,11 +18,7 @@
     "highlight.js": "^9.15.10",
     "next": "^9.0.4",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "remark": "^11.0.1",
-    "remark-react": "^6.0.0",
-    "remark-react-lowlight": "^0.7.0",
-    "unified": "^8.3.2"
+    "react-dom": "^16.9.0"
   },
   "devDependencies": {
     "@types/highlight.js": "^9.12.3",
