@@ -16,7 +16,9 @@ const Layout: React.FunctionComponent<Props> = ({ children, title = "Shiopon Blo
     </Head>
     <AppBar />
     <Container>
-      {children}
+      <main>
+        {children}
+      </main>
       <Footer />
     </Container>
   </React.Fragment>
