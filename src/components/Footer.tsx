@@ -6,7 +6,9 @@ import Copyright from "./Copyright";
 
 const useStyles = makeStyles(theme => ({
   footer: {
-    backgroundColor: theme.palette.background.paper,
+    color: 'rgba(255, 255, 255, 0.7)',
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    // backgroundColor: theme.palette.background.paper,
     marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0)
   }
@@ -18,12 +20,11 @@ export default function Footer() {
   return (
     <React.Fragment>
       <footer className={classes.footer}>
-        <hr />
         <Container maxWidth="lg">
           <Typography variant="h6" align="center" gutterBottom>
             Footer
           </Typography>
-          <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+          <Typography variant="subtitle1" align="center" component="p">
             Footer Message
           </Typography>
           <Copyright />
