@@ -4,7 +4,7 @@ import { Grid, Typography, CardActionArea, Card, CardContent, Hidden, CardMedia 
 import Layout from "../../src/components/Layout";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { NextPage } from 'next';
+import { NextPage } from "next";
 
 const useStyles = makeStyles(theme => ({
   typography: {
@@ -145,8 +145,7 @@ const EntryPage: NextPage<Props> = () => {
   );
 };
 
-
-EntryPage.getInitialProps = async (req) => {
+EntryPage.getInitialProps = async req => {
   const dir: string = "../../articles/";
   const entry: string | string[] = req.query.entry;
 
@@ -156,6 +155,6 @@ EntryPage.getInitialProps = async (req) => {
   // axiosとかで通信する
   // SSRなので、fetchは使えません(node-fetch入れればいける)。
   return { data: { foo: "bar" } };
-}
+};
 
 export default EntryPage;
