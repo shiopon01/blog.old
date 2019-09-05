@@ -1,6 +1,6 @@
 import * as React from "react";
 // import Link from "next/link";
-import Layout from "../src/components/Layout";
+import TopLayout from "../src/components/TopLayout";
 import { NextPage } from "next";
 import {
   Paper,
@@ -15,6 +15,8 @@ import {
   CardMedia
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+// import { Container } from "next/app";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -31,6 +33,10 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     flexShrink: 0
   },
+  paddingLR0: {
+    paddingLeft: 0,
+    paddingRight: 0
+  },
   mainFeaturedPost: {
     position: "relative",
     backgroundColor: theme.palette.grey[800],
@@ -39,7 +45,8 @@ const useStyles = makeStyles(theme => ({
     backgroundImage: "url(https://source.unsplash.com/user/erondu)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center"
+    backgroundPosition: "center",
+    height: 370
   },
   overlay: {
     position: "absolute",
@@ -120,115 +127,126 @@ const IndexPage: NextPage = () => {
   const social = ["GitHub", "Twitter", "Facebook"];
 
   return (
-    <Layout title="Home | Shiopon Blog">
-      <Paper className={classes.mainFeaturedPost}>
-        {/* Increase the priority of the hero background image */}
-        {<img style={{ display: "none" }} src="https://source.unsplash.com/user/erondu" alt="background" />}
-        <div className={classes.overlay} />
-        <Grid container>
-          <Grid item md={6}>
-            <div className={classes.mainFeaturedPostContent}>
-              <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                BLOG.SHIOPON.NET 👋
-              </Typography>
-              <Typography variant="h5" color="inherit" paragraph>
-                @shiopon01 のブログです！
-              </Typography>
-              <Link variant="subtitle1" href="#">
-                Subtitle
-              </Link>
-            </div>
+    <TopLayout title="Home | Shiopon Blog">
+      <Container className={classes.paddingLR0}>
+        <Paper className={classes.mainFeaturedPost}>
+          {/* Increase the priority of the hero background image */}
+          {<img style={{ display: "none" }} src="https://source.unsplash.com/user/erondu" alt="background" />}
+          <div className={classes.overlay} />
+          <Grid container>
+            <Grid item md={6}>
+              <div className={classes.mainFeaturedPostContent}>
+                <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+                  SHIOPON BLOG 👋
+                </Typography>
+                <Typography variant="h5" color="inherit" paragraph>
+                  @shiopon01 のブログです！
+                </Typography>
+                <Link variant="subtitle1" href="#">
+                  Subtitle
+                </Link>
+              </div>
+            </Grid>
           </Grid>
-        </Grid>
-      </Paper>
+        </Paper>
+      </Container>
       {/* End main featured post */}
 
-      {/* Sub featured posts */}
-      <Grid container spacing={4}>
-        {featuredPosts.map(post => (
-          <Grid item key={post.title} xs={12} md={6}>
-            <CardActionArea component="a" href="#">
-              <Card className={classes.card}>
-                <div className={classes.cardDetails}>
-                  <CardContent>
-                    <Typography component="h2" variant="h5">
-                      {post.title}
-                    </Typography>
-                    <Typography variant="subtitle1" color="textSecondary">
-                      {post.date}
-                    </Typography>
-                    <Typography variant="subtitle1" paragraph>
-                      {post.description}
-                    </Typography>
-                    <Typography variant="subtitle1" color="primary">
-                      Continue reading...
-                    </Typography>
-                  </CardContent>
-                </div>
-                <Hidden xsDown>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                </Hidden>
-              </Card>
-            </CardActionArea>
-          </Grid>
-        ))}
-      </Grid>
-      {/* End sub featured posts */}
-      <Grid container spacing={5} className={classes.mainGrid}>
-        {/* Main content */}
-        <Grid item xs={12} md={8}>
+      <Container>
+        {/* Featured articles */}
+        <Grid item xs={12}>
           <Typography variant="h6" gutterBottom>
-            From the Firehose
+            Featured articles
           </Typography>
           <Divider />
-          {/* {posts.map(post => (
+        </Grid>
+        <Grid container spacing={4}>
+          {featuredPosts.map(post => (
+            <Grid item key={post.title} xs={12} md={6}>
+              <CardActionArea component="a" href="#">
+                <Card className={classes.card}>
+                  <div className={classes.cardDetails}>
+                    <CardContent>
+                      <Typography component="h2" variant="h5">
+                        {post.title}
+                      </Typography>
+                      <Typography variant="subtitle1" color="textSecondary">
+                        {post.date}
+                      </Typography>
+                      <Typography variant="subtitle1" paragraph>
+                        {post.description}
+                      </Typography>
+                      <Typography variant="subtitle1" color="primary">
+                        Continue reading...
+                      </Typography>
+                    </CardContent>
+                  </div>
+                  <Hidden xsDown>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image="https://source.unsplash.com/random"
+                      title="Image title"
+                    />
+                  </Hidden>
+                </Card>
+              </CardActionArea>
+            </Grid>
+          ))}
+        </Grid>
+
+        {/* Latest articles */}
+        <Grid container spacing={5} className={classes.mainGrid}>
+          {/* Main content */}
+          <Grid item xs={12} md={8}>
+            <Typography variant="h6" gutterBottom>
+              Latest articles
+            </Typography>
+            <Divider />
+            {/* {posts.map(post => (
             <Markdown className={classes.markdown} key={post.substring(0, 40)}>
               {post}
             </Markdown>
           ))} */}
-        </Grid>
-        {/* End main content */}
-        {/* Sidebar */}
-        <Grid item xs={12} md={4}>
-          <Paper elevation={0} className={classes.sidebarAboutBox}>
-            <Typography variant="h6" gutterBottom>
-              About
+          </Grid>
+          {/* End main content */}
+          {/* Sidebar */}
+          <Grid item xs={12}>
+            {/* <Paper elevation={0} className={classes.sidebarAboutBox}>
+              <Typography variant="h6" gutterBottom>
+                About
+              </Typography>
+              <Typography>
+                Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean
+                lacinia bibendum nulla sed consectetur.
+              </Typography>
+            </Paper> */}
+            <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
+              Archives
             </Typography>
-            <Typography>
-              Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean
-              lacinia bibendum nulla sed consectetur.
+            {archives.map(archive => (
+              <Link display="block" variant="body1" href="#" key={archive}>
+                {archive}
+              </Link>
+            ))}
+            <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
+              Social
             </Typography>
-          </Paper>
-          <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
-            Archives
-          </Typography>
-          {archives.map(archive => (
-            <Link display="block" variant="body1" href="#" key={archive}>
-              {archive}
-            </Link>
-          ))}
-          <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
-            Social
-          </Typography>
-          {social.map(network => (
-            <Link display="block" variant="body1" href="#" key={network}>
-              {network}
-            </Link>
-          ))}
+            {social.map(network => (
+              <Link display="block" variant="body1" href="#" key={network}>
+                {network}
+              </Link>
+            ))}
+          </Grid>
+          {/* End sidebar */}
         </Grid>
-        {/* End sidebar */}
-      </Grid>
 
-      <h1>About</h1>
-      <p>This is the about page</p>
-      <p>
-        <Link href="/">Go home</Link>
-      </p>
-    </Layout>
+        <h1>About</h1>
+        <p>This is the about page</p>
+        <p>
+          <Link href="/">Go home</Link>
+        </p>
+      </Container>
+    </TopLayout>
   );
 };
 
