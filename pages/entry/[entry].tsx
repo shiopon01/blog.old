@@ -4,6 +4,8 @@ import { Grid, Typography, CardActionArea, Card, CardContent, Hidden, CardMedia 
 import Layout from "../../src/components/Layout";
 import { makeStyles } from "@material-ui/core/styles";
 
+import { NextPage } from 'next';
+
 const useStyles = makeStyles(theme => ({
   typography: {
     marginTop: "2em"
@@ -78,13 +80,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-// type Post = {
-//   title: string;
-//   date: string;
-//   description: string;
-// };
+interface Props {
+  data?: { foo: string };
+}
 
-const EntryPage: React.FunctionComponent = () => {
+const EntryPage: NextPage<Props> = () => {
   const classes = useStyles();
 
   return (
@@ -144,5 +144,18 @@ const EntryPage: React.FunctionComponent = () => {
     </Layout>
   );
 };
+
+
+EntryPage.getInitialProps = async (req) => {
+  const dir: string = "../../articles/";
+  const entry: string | string[] = req.query.entry;
+
+  // console.log(fs.statSync(dir + entry + ".md"));
+  console.log(dir + entry + ".md");
+
+  // axiosとかで通信する
+  // SSRなので、fetchは使えません(node-fetch入れればいける)。
+  return { data: { foo: "bar" } };
+}
 
 export default EntryPage;
