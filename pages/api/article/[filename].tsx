@@ -31,4 +31,9 @@ const handle = (req: NextApiRequest, res: NextApiResponse) => {
   res.json(response);
 };
 
+// const read = (path: string) => {
+//   let content: any = fs.readFileSync(path, 'utf8');
+//   return content;
+// };
+
 export default handle;
