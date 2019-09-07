@@ -1,6 +1,5 @@
 import * as fs from "fs";
 import { NextApiRequest, NextApiResponse } from "next";
-import { any } from "prop-types";
 
 interface Article {
   exists: boolean;
