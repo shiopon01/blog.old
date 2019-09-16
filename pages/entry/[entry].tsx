@@ -5,6 +5,7 @@ import Layout from "../../src/components/Layout";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { NextPage } from "next";
+import fetch from "isomorphic-unfetch";
 
 const useStyles = makeStyles(theme => ({
   typography: {
@@ -81,11 +82,18 @@ const useStyles = makeStyles(theme => ({
 }));
 
 interface Props {
-  data?: { foo: string };
+  data?: {
+    exists: boolean;
+    title?: string;
+    body?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+  };
 }
 
-const EntryPage: NextPage<Props> = () => {
+const EntryPage: NextPage<Props> = props => {
   const classes = useStyles();
+  console.log(props.data);
 
   return (
     <Layout title="Entry | Shiopon Blog">
@@ -146,15 +154,19 @@ const EntryPage: NextPage<Props> = () => {
 };
 
 EntryPage.getInitialProps = async req => {
-  const dir: string = "../../articles/";
-  const entry: string | string[] = req.query.entry;
+  const key: string = req.query.entry as string;
 
-  // console.log(fs.statSync(dir + entry + ".md"));
-  console.log(dir + entry + ".md");
+  console.log("key: ", key + ".md");
+  console.log(req);
 
-  // axiosとかで通信する
-  // SSRなので、fetchは使えません(node-fetch入れればいける)。
-  return { data: { foo: "bar" } };
+  const res = await fetch("http://localhost:3000/api/article/" + key);
+  const data = await res.json();
+
+  // console.log(`Show data fetched. Count: ${data.length}`);
+
+  return {
+    data: data
+  };
 };
 
 export default EntryPage;

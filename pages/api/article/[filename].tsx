@@ -15,6 +15,7 @@ const handle = (req: NextApiRequest, res: NextApiResponse) => {
   const path: string = dir + key + ".md";
 
   const response: Article = getArticle(path);
+  response.title = key as string;
 
   res.json(response);
 };
@@ -26,14 +27,13 @@ const getArticle = (path: string): Article => {
 
   if (fileExists(path)) {
     article.exists = true;
+    article.body = fileRead(path);
   }
-
   return article;
 };
 
 const fileExists = (path: string): boolean => {
   let exists: boolean = false;
-
   try {
     fs.statSync(path);
     exists = true;
@@ -42,13 +42,12 @@ const fileExists = (path: string): boolean => {
     //   exists = false;
     // }
   }
-
   return exists;
 };
 
-// const read = (path: string) => {
-//   let content: any = fs.readFileSync(path, 'utf8');
-//   return content;
-// };
+const fileRead = (path: string) => {
+  const content: any = fs.readFileSync(path, "utf8");
+  return content;
+};
 
 export default handle;
