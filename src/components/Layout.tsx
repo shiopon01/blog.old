@@ -6,7 +6,7 @@ type Props = {
   title?: string;
 };
 
-const Layout: React.FunctionComponent<Props> = ({ children, title = "Shiopon Blog" }) => (
+const Layout: React.FunctionComponent<Props> = ({ children, title="test" }) => (
   <TopLayout title={title}>
     <Container>{children}</Container>
   </TopLayout>
