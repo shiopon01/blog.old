@@ -1,16 +1,15 @@
 import * as React from "react";
 import Link from "next/link";
 import Layout from "../../src/components/Layout";
-import { useRouter } from "next/router";
+import { NextPage } from "next";
 
-const PagePage: React.FunctionComponent = () => {
-  const router = useRouter();
-  const { pid } = router.query;
+const PagePage: NextPage = (props: any) => {
+  const { pid } = props;
 
   return (
     <Layout title="About | Next.js + TypeScript Example">
-      <h1>About</h1>
-      <p>This is the about page</p>
+      <h1>Page page</h1>
+      <p>page</p>
       <p>
         <Link href="/">
           <a>{pid}</a>
@@ -18,6 +17,10 @@ const PagePage: React.FunctionComponent = () => {
       </p>
     </Layout>
   );
+};
+
+PagePage.getInitialProps = async (req: any) => {
+  return { pid: req.query.pid };
 };
 
 export default PagePage;

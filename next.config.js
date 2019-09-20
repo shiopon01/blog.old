@@ -1,33 +1,36 @@
 const fs = require("fs");
 const path = require("path");
-
 const dir = "./articles/";
 
-module.exports = {
-  exportPathMap: function() {
-    const articles = fs.readdirSync(dir).map(filename => {
-      return {
-        filename
-        // mtime: fs.statSync(dir + filename).mtime
-      };
-    });
-    // articles.sort((a, b) => b.mtime - a.mtime)
-
-    const pathMap = {
-      "/": { page: "/" },
-      "/about": { page: "/about" }
+const exportMapGen = () => {
+  const articles = fs.readdirSync(dir).map(filename => {
+    return {
+      filename
+      // mtime: fs.statSync(dir + filename).mtime
     };
+  });
 
-    // /page/[1..]
-    for (let i = 0; i < Math.ceil(articles.length / 5); i++) {
-      pathMap["/page/" + (i + 1)] = { page: "/page/[pid]" };
-    }
+  const pathMap = {
+    "/": { page: "/" },
+    "/about": { page: "/about" }
+  };
 
-    // /entry/[filename]
-    for (let article of articles) {
-      pathMap["/entry/" + path.basename(article.filename, path.extname(article.filename))] = { page: "/entry/[entry]" };
-    }
-
-    return pathMap;
+  // /page/[1..]
+  for (let i = 0; i < Math.ceil(articles.length / 5); i++) {
+    pathMap["/page/" + (i + 1)] = { page: "/page/[pid]", query: { pid: i + 1 }};
   }
+
+  // /entry/[postName]
+  for (let article of articles) {
+    const title = path.basename(article.filename, path.extname(article.filename));
+    pathMap["/entry/" + title] = { page: "/entry/[entry]", query: { entry: title }};
+  }
+
+  return async function() {
+    return pathMap;
+  };
+}
+
+module.exports = {
+  exportPathMap: exportMapGen()
 };
