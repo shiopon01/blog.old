@@ -11,6 +11,9 @@
     "type-check": "tsc",
     "postinstall": "typesync"
   },
+  "browser": {
+    "child_process": false
+  },
   "dependencies": {
     "@material-ui/core": "^4.3.2",
     "@material-ui/styles": "^4.3.0",
@@ -19,7 +22,8 @@
     "isomorphic-unfetch": "^3.0.0",
     "next": "^9.0.4",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "react-markdown": "^4.2.2"
   },
   "devDependencies": {
     "@types/highlight.js": "^9.12.3",

@@ -127,7 +127,7 @@ const IndexPage: NextPage = () => {
   const social = ["GitHub", "Twitter", "Facebook"];
 
   return (
-    <TopLayout title="Home | Shiopon Blog">
+    <TopLayout title="Home">
       <Container className={classes.paddingLR0}>
         <Paper className={classes.mainFeaturedPost}>
           {/* Increase the priority of the hero background image */}

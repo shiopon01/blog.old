@@ -7,10 +7,10 @@ type Props = {
   title?: string;
 };
 
-const Layout: React.FunctionComponent<Props> = ({ children, title = "Shiopon Blog" }) => (
+const Layout: React.FunctionComponent<Props> = ({ children, title = undefined }) => (
   <React.Fragment>
     <Head>
-      <title>{title}</title>
+      <title>{title !== undefined ? title + " | " : ""}Shiopon Blog</title>
     </Head>
     <AppBar />
     <main>{children}</main>
