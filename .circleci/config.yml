@@ -14,23 +14,20 @@ jobs:
         - master
     steps:
       - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
       - run: git config user.name "shiopon01+circleci"
       - run: git config user.email "shio.0323+circleci@gmail.com"
-      - run: sed -i -e `echo s/localhost/$(hostname -i)/` const.tsx
+      # - run:
+      #     name: update-npm
+      #     command: "sudo npm install -g npm@latest"
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
       - run: npm run build
-      - run: npm run start &
-      - run: sleep 3
-      - run: curl `echo $(hostname -i):3000/api/index`
-      - run: npm run export
+      - run: npm run ci
       - run: git reset --hard HEAD
       - run: git checkout gh-pages
       - run: ls | grep -v -E 'out|CNAME$' | xargs rm -rf
@@ -38,10 +35,3 @@ jobs:
       - run: git add .
       - run: git commit -m 'update by circleci'
       - run: git push origin gh-pages
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      # run tests!
-      # - run: yarn test

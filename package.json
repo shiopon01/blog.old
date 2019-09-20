@@ -9,7 +9,8 @@
     "start": "next start",
     "export": "next export",
     "type-check": "tsc",
-    "postinstall": "typesync"
+    "postinstall": "typesync",
+    "ci": "start-server-and-test start http://localhost:3000 export"
   },
   "browser": {
     "child_process": false
@@ -31,6 +32,7 @@
     "@types/node": "^12.7.2",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
+    "start-server-and-test": "^1.10.2",
     "typescript": "^3.5.3",
     "typesync": "^0.6.1"
   }
