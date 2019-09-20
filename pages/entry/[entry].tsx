@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import { Grid } from "@material-ui/core";
 
 import Layout from "../../src/components/Layout";
+import { host } from "../../const";
 
 interface Props {
   data?: {
@@ -36,7 +37,7 @@ const EntryPage: NextPage<Props> = (props: any) => {
 
 EntryPage.getInitialProps = async (req: any) => {
   const key: string = req.query.entry as string;
-  const res = await fetch("http://localhost:3000/api/articles/" + key);
+  const res = await fetch(host + "/api/articles/" + key);
   const data = await res.json();
   return { data };
 };

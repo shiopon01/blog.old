@@ -24,8 +24,12 @@ jobs:
 
       - run: git config user.name "shiopon01+circleci"
       - run: git config user.email "shio.0323+circleci@gmail.com"
+      - run: sed -i -e `echo s/localhost/$(hostname -i)/` const.tsx
       - run: npm install
       - run: npm run build
+      - run: npm run start &
+      - run: sleep 3
+      - run: curl `echo $(hostname -i):3000/api/index`
       - run: npm run export
       - run: git reset --hard HEAD
       - run: git checkout gh-pages
