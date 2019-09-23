@@ -3,7 +3,6 @@ version: 2
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    # specify the version you desire here
     - image: circleci/node:8.9.1
 
 jobs:
@@ -16,9 +15,6 @@ jobs:
       - checkout
       - run: git config user.name "shiopon01+circleci"
       - run: git config user.email "shio.0323+circleci@gmail.com"
-      # - run:
-      #     name: update-npm
-      #     command: "sudo npm install -g npm@latest"
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run: npm install
