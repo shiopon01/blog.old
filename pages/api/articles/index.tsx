@@ -12,11 +12,13 @@ const handle = (_req: NextApiRequest, res: NextApiResponse) => {
 const getArticles = (dir: string) => {
   const articles = fs.readdirSync(dir).map(filename => {
     const title = path.basename(filename, path.extname(filename));
+    const subtitle = "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica";
     const createdAt = title.split('-').slice(0, 3).join('-');
     const updatedAt =  fs.statSync(dir + filename).mtime.toJSON().split('T')[0];
 
     return {
       title,
+      subtitle,
       createdAt,
       updatedAt,
       image: "https://source.unsplash.com/random"

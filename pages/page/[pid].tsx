@@ -19,6 +19,7 @@ import {
 
 import TopLayout from "../../src/components/TopLayout";
 import Header from "../../src/components/Header";
+import Paginate from "../../src/components/Paginate";
 import { HOST } from "../../const";
 
 const useStyles = makeStyles(theme => ({
@@ -52,7 +53,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: 20,
     fontSize: 30
   },
-  entryBody: {
+  subtitle: {
     fontSize: 24
   },
   avatar: {
@@ -85,9 +86,8 @@ const PagePage: NextPage = (props: any) => {
                 <Typography gutterBottom variant="h5" component="h2" className={classes.entryTitle}>
                   {entry.title}
                 </Typography>
-                <Typography variant="body1" color="textSecondary" className={classes.entryBody}>
-                  Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all
-                  continents except Antarctica
+                <Typography variant="body1" color="textSecondary" className={classes.subtitle}>
+                  {entry.subtitle}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" className={classes.readmore}>
                   Read more...
@@ -125,6 +125,7 @@ const PagePage: NextPage = (props: any) => {
             </Typography>
           </Grid>
         </Grid>
+        <Paginate page={pid} max={props.count} />
       </Container>
     </TopLayout>
   );
@@ -132,9 +133,12 @@ const PagePage: NextPage = (props: any) => {
 
 PagePage.getInitialProps = async (req: any) => {
   const pid: string = req.query.pid as string;
-  const res = await fetch(HOST + "/api/articles?page=" + pid);
-  const data = await res.json();
-  return { pid, data };
+  const articlesResp = await fetch(HOST + "/api/articles?page=" + pid);
+  const countResp = await fetch(HOST + "/api/count/page");
+
+  const data = await articlesResp.json();
+  const count = await countResp.json();
+  return { pid, data, count: count.count };
 };
 
 export default PagePage;
