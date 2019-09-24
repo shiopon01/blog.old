@@ -109,13 +109,13 @@ const PagePage: NextPage = (props: any) => {
   }
 
   return (
-    <TopLayout title={`Page ${pid}`}>
+    <TopLayout title={`Latest - Page ${pid}`}>
       <Header />
       <Container>
         <Grid container>
           <Grid item xs={12} md={8} className={classes.col}>
             <Typography variant="h6" gutterBottom className={classes.title}>
-              Latest Page {pid}
+              Latest - Page {pid}
             </Typography>
             <Grid container>{list}</Grid>
           </Grid>
