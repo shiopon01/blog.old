@@ -23,9 +23,6 @@ import Paginate from "../../src/components/Paginate";
 import { HOST } from "../../const";
 
 const useStyles = makeStyles(theme => ({
-  card: {
-    // display: "flex"
-  },
   cardDetails: {
     flex: 1
   },
@@ -45,6 +42,9 @@ const useStyles = makeStyles(theme => ({
   content: {
     padding: "20px 0",
     borderBottom: "1px solid rgba(0,0,0,.0785) !important"
+  },
+  about: {
+    padding: "20px 0"
   },
   readmore: {
     marginTop: 10
@@ -69,7 +69,7 @@ const PagePage: NextPage = (props: any) => {
   for (const entry of props.data) {
     list.push(
       <Grid item xs={12} key={list.length} className={classes.content}>
-        <Card className={classes.card} square={false} elevation={0}>
+        <Card square={false} elevation={0}>
           <CardHeader
             avatar={
               <Avatar aria-label="recipe" className={classes.avatar}>
@@ -123,6 +123,11 @@ const PagePage: NextPage = (props: any) => {
             <Typography variant="h6" gutterBottom className={classes.title}>
               About
             </Typography>
+            <Grid container>
+              <Grid item xs={12} className={classes.about}>
+                About column
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
         <Paginate page={pid} max={props.count} />
