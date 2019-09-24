@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography, CardActionArea, Card, CardContent, Hidden, CardMedia } from "@material-ui/core";
 
 import Layout from "../../src/components/Layout";
-import { host } from "../../const";
+import { HOST } from "../../const";
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -69,7 +69,7 @@ const PagePage: NextPage = (props: any) => {
 
 PagePage.getInitialProps = async (req: any) => {
   const pid: string = req.query.pid as string;
-  const res = await fetch(host + "/api/articles?page=" + pid);
+  const res = await fetch(HOST + "/api/articles?page=" + pid);
   const data = await res.json();
   return { pid, data };
 };

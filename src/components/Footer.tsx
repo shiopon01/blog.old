@@ -1,18 +1,29 @@
 import React from "react";
-import { Container, Typography } from "@material-ui/core";
+import { Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Icon from "@mdi/react";
+import { mdiTwitter, mdiFacebookBox, mdiInstagram, mdiGithubCircle, mdiLinkedinBox } from "@mdi/js";
 
 import Copyright from "./Copyright";
 
 const useStyles = makeStyles(theme => ({
   footer: {
-    color: 'rgba(255, 255, 255, 0.7)',
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
-    // backgroundColor: theme.palette.background.paper,
+    color: "rgba(255, 255, 255, 0.7)",
+    backgroundColor: "rgba(0, 0, 0, 0.9)",
     marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0)
   }
 }));
+
+function MarginHorizonIcon(props: any) {
+  return (
+    <span style={{ margin: "0 10px" }}>
+      <a href={props.url} target="_blank">
+        <Icon path={props.path} size={1} color="white" />
+      </a>
+    </span>
+  );
+}
 
 export default function Footer() {
   const classes = useStyles();
@@ -21,13 +32,20 @@ export default function Footer() {
     <React.Fragment>
       <footer className={classes.footer}>
         <Container maxWidth="lg">
-          <Typography variant="h6" align="center" gutterBottom>
-            Footer
-          </Typography>
-          <Typography variant="subtitle1" align="center" component="p">
-            Footer Message
-          </Typography>
-          <Copyright />
+          <Grid container>
+            <Grid item xs={6}>
+              <Copyright />
+            </Grid>
+            <Grid item xs={6}>
+              <Typography align="center">
+                <MarginHorizonIcon path={mdiLinkedinBox} url="https://linkedin.com/in/shion-ueda-613743156" />
+                <MarginHorizonIcon path={mdiFacebookBox} url="https://facebook.com/shiopon.ueda" />
+                <MarginHorizonIcon path={mdiGithubCircle} url="http://github.com/shiopon01" />
+                <MarginHorizonIcon path={mdiTwitter} url="https://twitter.com/@shiopon01" />
+                <MarginHorizonIcon path={mdiInstagram} url="" />
+              </Typography>
+            </Grid>
+          </Grid>
         </Container>
       </footer>
     </React.Fragment>
