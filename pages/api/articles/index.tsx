@@ -3,10 +3,13 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 const path = require("path");
 
-const handle = (_req: NextApiRequest, res: NextApiResponse) => {
+const handle = (req: NextApiRequest, res: NextApiResponse) => {
   const dir: string = "./articles/";
   const response: any = getArticles(dir);
-  res.json(response);
+
+  const page: number = parseInt(req.query.page as string);
+  const head: number = (page - 1) * 10;
+  res.json(response.slice(head, head + 10));
 };
 
 const getArticles = (dir: string) => {

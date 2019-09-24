@@ -16,7 +16,7 @@ const exportMapGen = () => {
   };
 
   // /page/[1..]
-  for (let i = 0; i < Math.ceil(articles.length / 5); i++) {
+  for (let i = 0; i < Math.ceil(articles.length / 10); i++) {
     pathMap["/page/" + (i + 1)] = { page: "/page/[pid]", query: { pid: i + 1 }};
   }
 
