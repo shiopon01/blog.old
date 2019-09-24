@@ -1,7 +1,6 @@
 import * as React from "react";
 import fetch from "isomorphic-unfetch";
 import { NextPage } from "next";
-import Link from "next/link";
 
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -10,10 +9,12 @@ import {
   Typography,
   CardActionArea,
   Card,
+  CardHeader,
   CardContent,
   CardMedia,
   CardActions,
-  Button
+  Button,
+  Avatar
 } from "@material-ui/core";
 
 import TopLayout from "../../src/components/TopLayout";
@@ -53,19 +54,31 @@ const useStyles = makeStyles(theme => ({
   },
   entryBody: {
     fontSize: 24
+  },
+  avatar: {
+    backgroundColor: "red"
   }
 }));
 
 const PagePage: NextPage = (props: any) => {
   const classes = useStyles();
   const { pid } = props;
-
   const list = [];
+
   for (const entry of props.data) {
     list.push(
       <Grid item xs={12} key={list.length} className={classes.content}>
         <Card className={classes.card} square={false} elevation={0}>
-          <Link href={"/entry/" + entry.title}>
+          <CardHeader
+            avatar={
+              <Avatar aria-label="recipe" className={classes.avatar}>
+                S
+              </Avatar>
+            }
+            title="shiopon01"
+            subheader={entry.createdAt}
+          />
+          <a href={"/entry/" + entry.title} style={{ textDecoration: "none", color: "rgba(0, 0, 0, 0.87)" }}>
             <CardActionArea disableRipple={true}>
               <CardMedia className={classes.cardMedia} image={entry.image} title="Contemplative Reptile" />
               <CardContent>
@@ -81,7 +94,7 @@ const PagePage: NextPage = (props: any) => {
                 </Typography>
               </CardContent>
             </CardActionArea>
-          </Link>
+          </a>
           <CardActions>
             <Button size="small" color="primary">
               Share
