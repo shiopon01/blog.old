@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
   footer: {
     color: "rgba(255, 255, 255, 0.7)",
     backgroundColor: "rgba(0, 0, 0, 0.9)",
-    marginTop: theme.spacing(8),
+    marginTop: "auto",
     padding: theme.spacing(6, 0)
   }
 }));

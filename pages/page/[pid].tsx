@@ -18,7 +18,6 @@ import {
 } from "@material-ui/core";
 
 import TopLayout from "../../src/components/TopLayout";
-import Header from "../../src/components/Header";
 import Paginate from "../../src/components/Paginate";
 import { HOST } from "../../const";
 
@@ -110,7 +109,6 @@ const PagePage: NextPage = (props: any) => {
 
   return (
     <TopLayout title={`Latest - Page ${pid}`}>
-      <Header />
       <Container>
         <Grid container>
           <Grid item xs={12} md={8} className={classes.col}>
