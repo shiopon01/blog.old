@@ -67,7 +67,7 @@ const PagePage: NextPage = (props: any) => {
 
   for (const entry of props.data) {
     list.push(
-      <Grid item xs={12} key={list.length} className={classes.content}>
+      <Grid item xs={12} key={entry.path} className={classes.content}>
         <Card square={false} elevation={0}>
           <CardHeader
             avatar={
@@ -78,7 +78,7 @@ const PagePage: NextPage = (props: any) => {
             title="shiopon01"
             subheader={entry.createdAt}
           />
-          <a href={"/entry/" + entry.title} style={{ textDecoration: "none", color: "rgba(0, 0, 0, 0.87)" }}>
+          <a href={"/entry/" + entry.path} style={{ textDecoration: "none", color: "rgba(0, 0, 0, 0.87)" }}>
             <CardActionArea disableRipple={true}>
               <CardMedia className={classes.cardMedia} image={entry.image} title="Contemplative Reptile" />
               <CardContent>
@@ -139,9 +139,9 @@ PagePage.getInitialProps = async (req: any) => {
   const articlesResp = await fetch(HOST + "/api/articles?page=" + pid);
   const countResp = await fetch(HOST + "/api/count/page");
 
-  const data = await articlesResp.json();
+  const articles = await articlesResp.json();
   const count = await countResp.json();
-  return { pid, data, count: count.count };
+  return { pid, data: articles.articles, count: count.count };
 };
 
 export default PagePage;

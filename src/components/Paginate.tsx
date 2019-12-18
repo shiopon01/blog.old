@@ -13,7 +13,7 @@ const Paginate = (props: any) => {
   const list = [];
 
   for (let i = 0; i < props.max; i++) {
-    list.push(<span>{i + 1}</span>);
+    list.push(<span key={i}>{i + 1}</span>);
   }
 
   return (
