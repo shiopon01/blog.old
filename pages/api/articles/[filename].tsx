@@ -4,11 +4,8 @@ import { getArticle } from "../../../src/utils/filectl";
 const handle = (req: NextApiRequest, res: NextApiResponse) => {
   const dir: string = "./articles/";
   const key: string | string[] = req.query.filename;
-  const path: string = dir + key + ".md";
 
-  const response = getArticle(path);
-  response.title = key as string;
-
+  const response = getArticle(dir, key + ".md");
   res.json(response);
 };
 
