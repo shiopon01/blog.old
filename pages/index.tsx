@@ -8,14 +8,7 @@ import Header from "../src/components/Header";
 import LatestStories from "../src/components/LatestStories";
 import { HOST } from "../const";
 
-const useStyles = makeStyles(theme => ({
-  paddingLR0: {
-    paddingLeft: 0,
-    paddingRight: 0
-  },
-  mainGrid: {
-    marginTop: theme.spacing(3)
-  },
+const useStyles = makeStyles(() => ({
   parent: {
     height: 120,
     position: "relative"
@@ -58,9 +51,9 @@ const IndexPage: NextPage = (props: any) => {
 };
 
 IndexPage.getInitialProps = async () => {
-  const articlesResp = await fetch(HOST + "/api/articles?page=1");
-  const articles = await articlesResp.json();
-  return { articles };
+  const response = await fetch(HOST + "/api/articles?page=1");
+  const result = await response.json();
+  return { articles: result.articles };
 };
 
 export default IndexPage;

@@ -41,7 +41,7 @@ const LatestStories: React.FC<Props> = ({ articles }) => {
       isFirst = false;
       list.push(
         <Grid item key={article.title} xs={12}>
-          <CardActionArea component="a" href={"/entry/" + article.title}>
+          <CardActionArea component="a" href={"/entry/" + article.path}>
             <Card className={classes.card}>
               <CardMedia className={classes.topCardMedia} image="https://source.unsplash.com/random" />
               <div className={classes.cardDetails}>
@@ -68,7 +68,7 @@ const LatestStories: React.FC<Props> = ({ articles }) => {
       list.push(
         <Grid item key={article.title} xs={4}>
           <Card className={classes.card}>
-            <CardActionArea component="a" href={"/entry/" + article.title}>
+            <CardActionArea component="a" href={"/entry/" + article.path}>
               <CardMedia className={classes.cardMedia} image="https://source.unsplash.com/random" title="Image title" />
               {/* <div className={classes.cardDetails}> */}
               <CardContent>
