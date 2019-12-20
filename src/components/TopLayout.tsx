@@ -4,6 +4,7 @@ import AppBar from "./AppBar";
 import Footer from "./Footer";
 import { makeStyles } from "@material-ui/core/styles";
 
+
 type Props = {
   title?: string;
 };
@@ -23,6 +24,7 @@ const Layout: React.FunctionComponent<Props> = ({ children, title = undefined })
     <div className={classes.wrapper}>
       <Head>
         <title>{title !== undefined ? title + " | " : ""}Shiopon Blog</title>
+        <link type="text/css" href="/static/font.css" />
       </Head>
       <AppBar />
       <main>{children}</main>
