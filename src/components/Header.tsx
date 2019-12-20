@@ -37,8 +37,7 @@ const useStyles = makeStyles(theme => ({
     position: "absolute",
     bottom: 0,
     height: 100,
-    width: "100%",
-    backgroundColor: "green"
+    width: "100%"
   },
   bottomMenu: {
     height: "100%"
@@ -53,7 +52,7 @@ export default function Header() {
       <Paper className={classes.mainFeaturedPost}>
         <div className={classes.overlay} />
         <Grid container>
-          <Grid item md={12}>
+          <Grid item xs={12}>
             <div className={classes.mainFeaturedPostContent}>
               <Typography component="h1" variant="h3" color="inherit" align="center" gutterBottom>
                 SHIOPON BLOG 👋
@@ -63,10 +62,13 @@ export default function Header() {
         </Grid>
         <div className={classes.mainBottom}>
           <Grid container alignItems="center" justify="center" className={classes.bottomMenu}>
-            <Grid item md={8}>
-              <Typography color="inherit">
-                @shiopon01 のブログです！
-              </Typography>
+            <Grid item xs={10}>
+              <Grid container>
+                <Grid item xs={3}><Typography color="inherit">SHIOPON BLOG</Typography></Grid>
+                <Grid item xs={3}><Typography color="inherit">SHIOPON BLOG</Typography></Grid>
+                <Grid item xs={3}><Typography color="inherit">SHIOPON BLOG</Typography></Grid>
+                <Grid item xs={3}><Typography color="inherit">SHIOPON BLOG</Typography></Grid>
+              </Grid>
             </Grid>
           </Grid>
         </div>
