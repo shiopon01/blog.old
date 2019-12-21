@@ -5,9 +5,8 @@ import ReactMarkdown from "react-markdown";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography, CardHeader, Avatar } from "@material-ui/core";
 
-import TopLayout from "../../src/components/TopLayout";
+import Layout from "../../src/components/Layout";
 import { HOST } from "../../const";
-import { Container } from "next/app";
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -87,46 +86,42 @@ const EntryPage: NextPage<any> = (props: any) => {
   };
 
   return (
-    <TopLayout title="Entry">
-      <Container>
+    <Layout title="Entry">
+      <article>
         <Grid container>
-          <article>
-            <Grid container>
-              <Grid item xs={12} sm={12}>
-                <section>
-                  <Grid container>
-                    <Grid item xs={12} className={classes.title}>
-                      <Typography variant="h3">{props.title}</Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <CardHeader
-                        avatar={
-                          <Avatar aria-label="recipe" className={classes.avatar}>
-                            S
-                          </Avatar>
-                        }
-                        title="shiopon01"
-                        subheader={props.createdAt}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <img src={props.image} className={classes.headerImage} />
-                    </Grid>
-                  </Grid>
-                  <ReactMarkdown
-                    className={classes.body}
-                    source={props.body}
-                    renderers={{
-                      heading: Heading
-                    }}
-                  ></ReactMarkdown>
-                </section>
+          <Grid item xs={12} sm={12}>
+            <section>
+              <Grid container>
+                <Grid item xs={12} className={classes.title}>
+                  <Typography variant="h3">{props.title}</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <CardHeader
+                    avatar={
+                      <Avatar aria-label="recipe" className={classes.avatar}>
+                        S
+                      </Avatar>
+                    }
+                    title="shiopon01"
+                    subheader={props.createdAt}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <img src={props.image} className={classes.headerImage} />
+                </Grid>
               </Grid>
-            </Grid>
-          </article>
+              <ReactMarkdown
+                className={classes.body}
+                source={props.body}
+                renderers={{
+                  heading: Heading
+                }}
+              ></ReactMarkdown>
+            </section>
+          </Grid>
         </Grid>
-      </Container>
-    </TopLayout>
+      </article>
+    </Layout>
   );
 };
 

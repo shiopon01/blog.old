@@ -1,9 +1,10 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import AppBar from "./AppBar";
 import Footer from "./Footer";
 import { makeStyles } from "@material-ui/core/styles";
 
+import { initGA, logPageView } from "../utils/analytics";
 
 type Props = {
   title?: string;
@@ -19,6 +20,16 @@ const useStyles = makeStyles(() => ({
 
 const Layout: React.FunctionComponent<Props> = ({ children, title = undefined }) => {
   const classes = useStyles();
+
+  useEffect(() => {
+    // @ts-ignore
+    if (!window.GA_INITIALIZED) {
+      initGA()
+      // @ts-ignore
+      window.GA_INITIALIZED = true
+    }
+    logPageView()
+  }, []);
 
   return (
     <div className={classes.wrapper}>
