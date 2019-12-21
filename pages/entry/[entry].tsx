@@ -8,7 +8,7 @@ import { Grid, Typography, CardHeader, Avatar } from "@material-ui/core";
 import Layout from "../../src/components/Layout";
 import { HOST } from "../../const";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   title: {
     marginTop: 20
   },
@@ -24,7 +24,15 @@ const useStyles = makeStyles(() => ({
     lineHeight: 1.58,
     color: "#1e1e1e",
     fontWeight: 400,
-    fontSize: 20
+    maxWidth: 680,
+    marginLeft: "auto",
+    marginRight: "auto",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 18
+    },
+    [theme.breakpoints.up("sm")]: {
+      fontSize: 21
+    }
   },
   h1: {
     fontFamily: "medium-content-sans-serif-font, sans-serif",
@@ -42,7 +50,8 @@ const useStyles = makeStyles(() => ({
     marginBottom: 0,
     fontWeight: 600
   },
-  h3: { // TODO: ちゃんと設定する
+  h3: {
+    // TODO: ちゃんと設定する
     fontFamily: "medium-content-sans-serif-font, sans-serif",
     fontSize: 26,
     color: "rgba(0, 0, 0, .8)",
@@ -78,8 +87,7 @@ const EntryPage: NextPage<any> = (props: any) => {
     <Layout title="Entry">
       <article>
         <Grid container>
-          <Grid item xs={1} />
-          <Grid item xs={10}>
+          <Grid item xs={12} sm={12}>
             <section>
               <Grid container>
                 <Grid item xs={12} className={classes.title}>
@@ -100,7 +108,6 @@ const EntryPage: NextPage<any> = (props: any) => {
                   <img src={props.image} className={classes.headerImage} />
                 </Grid>
               </Grid>
-
               <ReactMarkdown
                 className={classes.body}
                 source={props.body}
