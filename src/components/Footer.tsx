@@ -40,9 +40,9 @@ export default function Footer() {
               <Typography align="center">
                 <MarginHorizonIcon path={mdiLinkedinBox} url="https://linkedin.com/in/shion-ueda-613743156" />
                 <MarginHorizonIcon path={mdiFacebookBox} url="https://facebook.com/shiopon.ueda" />
-                <MarginHorizonIcon path={mdiGithubCircle} url="http://github.com/shiopon01" />
+                <MarginHorizonIcon path={mdiGithubCircle} url="https://github.com/shiopon01" />
                 <MarginHorizonIcon path={mdiTwitter} url="https://twitter.com/@shiopon01" />
-                <MarginHorizonIcon path={mdiInstagram} url="" />
+                <MarginHorizonIcon path={mdiInstagram} url="https://www.instagram.com/shiopon_u/" />
               </Typography>
             </Grid>
           </Grid>
