@@ -43,7 +43,7 @@ const LatestStories: React.FC<Props> = ({ articles }) => {
         <Grid item key={article.title} xs={12}>
           <CardActionArea component="a" href={"/entry/" + article.path}>
             <Card className={classes.card}>
-              <CardMedia className={classes.topCardMedia} image="https://source.unsplash.com/random" />
+              <CardMedia className={classes.topCardMedia} image={article.image} />
               <div className={classes.cardDetails}>
                 <CardContent>
                   <Typography component="h2" variant="h5">
@@ -69,7 +69,7 @@ const LatestStories: React.FC<Props> = ({ articles }) => {
         <Grid item key={article.title} xs={6} md={4}>
           <Card className={classes.card}>
             <CardActionArea component="a" href={"/entry/" + article.path}>
-              <CardMedia className={classes.cardMedia} image="https://source.unsplash.com/random" title="Image title" />
+              <CardMedia className={classes.cardMedia} image={article.image} title="Image title" />
               {/* <div className={classes.cardDetails}> */}
               <CardContent>
                 <Typography component="h2" variant="h5">
