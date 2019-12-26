@@ -16,7 +16,7 @@
     "child_process": false
   },
   "dependencies": {
-    "@material-ui/core": "^4.8.0",
+    "@material-ui/core": "^4.8.1",
     "@material-ui/styles": "^4.7.1",
     "@mdi/js": "^4.7.95",
     "@mdi/react": "^1.2.1",
@@ -27,19 +27,21 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-ga": "^2.7.0",
-    "react-markdown": "^4.2.2"
+    "react-markdown": "^4.2.2",
+    "react-share": "^3.0.1"
   },
   "devDependencies": {
     "@types/eslint": "^6.1.3",
     "@types/eslint-plugin-prettier": "^2.2.0",
     "@types/highlight.js": "^9.12.3",
     "@types/next": "^9.0.0",
-    "@types/node": "^12.12.21",
+    "@types/node": "^13.1.0",
     "@types/prettier": "^1.19.0",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
+    "@types/react-share": "^3.0.3",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-prettier": "^6.8.0",
     "eslint-plugin-prettier": "^3.1.2",
     "prettier": "^1.19.1",
     "start-server-and-test": "^1.10.6",
