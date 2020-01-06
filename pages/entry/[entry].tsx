@@ -18,10 +18,9 @@ const useStyles = makeStyles(theme => ({
     marginRight: "auto"
   },
   article: {
+    width: "100%"
   },
   title: {
-    fontWeight: 400,
-    fontFamily: "medium-content-title-font, serif",
     [theme.breakpoints.down("xs")]: {
       fontSize: 30
     },
@@ -30,7 +29,6 @@ const useStyles = makeStyles(theme => ({
     }
   },
   header: {
-    fontWeight: 400,
     fontSize: 16
   },
   avatar: {
@@ -43,11 +41,7 @@ const useStyles = makeStyles(theme => ({
   },
   body: {
     // padding: "2rem",
-    fontFamily: "medium-content-serif-font, serif",
     lineHeight: 1.58,
-    color: "#1e1e1e",
-    fontWeight: 400,
-    letterSpacing: "-0.004em",
     [theme.breakpoints.down("xs")]: {
       fontSize: 18
     },
@@ -56,34 +50,59 @@ const useStyles = makeStyles(theme => ({
     }
   },
   h1: {
-    fontFamily: "medium-content-sans-serif-font, sans-serif",
     fontSize: 34,
-    color: "rgba(0, 0, 0, .8)",
-    lineHeight: "1.12",
-    marginBottom: 0,
+    lineHeight: 1.12,
+    marginTop: "1.95em",
+    marginBottom: "-0.28em",
     fontWeight: 600
   },
   h2: {
-    fontFamily: "medium-content-sans-serif-font, sans-serif",
     fontSize: 26,
-    color: "rgba(0, 0, 0, .8)",
     lineHeight: 1.18,
-    marginBottom: 0,
+    marginTop: "1.72em",
+    marginBottom: "-0.31em",
     fontWeight: 600
   },
   h3: {
     // TODO: ちゃんと設定する
-    fontFamily: "medium-content-sans-serif-font, sans-serif",
     fontSize: 26,
-    color: "rgba(0, 0, 0, .8)",
     lineHeight: 1.18,
     marginBottom: 0,
     fontWeight: 600
+  },
+  firstParagraph: {
+    marginTop: "0.86em",
+    marginBottom: "-0.46em"
+  },
+  paragraph: {
+    marginTop: "2em",
+    marginBottom: "-0.46em"
+  },
+  list: {
+    margin: 0
+  },
+  firstListItem: {
+    marginTop: "0.86em",
+    marginBottom: "-0.46em"
+  },
+  centerListItem: {
+    marginTop: "2em",
+    marginBottom: "-0.46em"
+  },
+  listItem: {
+    marginTop: "1.05em",
+    marginBottom: "-0.46em"
+  },
+  bottom: {
+    marginTop: 40,
+    width: "100%"
   }
 }));
 
 const EntryPage: NextPage<any> = (props: any) => {
   const classes = useStyles();
+  let isFirstP = false;
+  let isFirstListItem = true;
 
   const Heading = (props: any) => {
     const level = props.level;
@@ -101,6 +120,42 @@ const EntryPage: NextPage<any> = (props: any) => {
       default:
         break;
     }
+
+    isFirstP = true;
+    return React.createElement(tagName, { className }, props.children);
+  };
+
+  const Paragraph = (props: any) => {
+    const tagName = "p";
+    let className = classes.paragraph;
+    if (isFirstP) {
+      className = classes.firstParagraph;
+    }
+
+    isFirstP = false;
+    return React.createElement(tagName, { className }, props.children);
+  };
+
+  const List = (props: any) => {
+    const tagName = props.ordered ? "ol" : "ul";
+    const className = classes.list;
+    isFirstListItem = true;
+    return React.createElement(tagName, { className }, props.children);
+  };
+
+  const ListItem = (props: any) => {
+    const tagName = "li";
+    let className = classes.listItem;
+
+    if (isFirstListItem && isFirstP) {
+      className = classes.firstListItem;
+    }
+    if (isFirstListItem && !isFirstP) {
+      className = classes.centerListItem;
+    }
+
+    isFirstP = false;
+    isFirstListItem = false;
     return React.createElement(tagName, { className }, props.children);
   };
 
@@ -119,7 +174,7 @@ const EntryPage: NextPage<any> = (props: any) => {
             </Grid>
             {/* 投稿者情報 */}
             <Grid container>
-              <Grid item xs={6}>
+              <Grid item xs={6} sm={6}>
                 <CardHeader
                   classes={{ title: classes.header, subheader: classes.header }}
                   avatar={
@@ -148,16 +203,23 @@ const EntryPage: NextPage<any> = (props: any) => {
                   className={classes.body}
                   source={props.body}
                   renderers={{
-                    heading: Heading
+                    heading: Heading,
+                    paragraph: Paragraph,
+                    list: List,
+                    listItem: ListItem
                   }}
                 ></ReactMarkdown>
               </Grid>
             </Grid>
           </section>
-          <div>
-            <ShareButtons url={"http://example.com"} />
-          </div>
         </article>
+        <div className={classes.bottom}>
+          <Grid container>
+            <Grid item xs={12}>
+              <ShareButtons url={"http://example.com"} />
+            </Grid>
+          </Grid>
+        </div>
       </Grid>
     </Layout>
   );

@@ -13,7 +13,7 @@ import {
 
 const useStyles = makeStyles(() => ({
   center: {
-    textAlign: "center"
+    textAlign: "right"
   },
   height: {
     height: "100%"
