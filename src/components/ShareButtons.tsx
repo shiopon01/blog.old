@@ -32,9 +32,10 @@ const useStyles = makeStyles(() => ({
 
 type Props = {
   url: string;
+  title: string;
 };
 
-const ShareButtons: React.FC<Props> = ({ url }) => {
+const ShareButtons: React.FC<Props> = ({ url, title }) => {
   const classes = useStyles();
 
   return (
@@ -46,7 +47,7 @@ const ShareButtons: React.FC<Props> = ({ url }) => {
         <Grid item xs={12}>
           <div className={classes.center}>
             <span className={classes.span}>
-              <TwitterShareButton url={url} title={"twitter"} className={classes.shareButton}>
+              <TwitterShareButton url={url} title={title + " | Shiopon Blog"} className={classes.shareButton}>
                 <TwitterIcon size={30} />
               </TwitterShareButton>
             </span>

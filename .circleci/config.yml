@@ -28,6 +28,7 @@ jobs:
       - run: git checkout gh-pages
       - run: ls | grep -v -E 'out|CNAME$' | xargs rm -rf
       - run: mv -f out/* ./
+      - run: touch .nojekyll
       - run: git add .
       - run: git commit -m 'update by circleci'
       - run: git push origin gh-pages

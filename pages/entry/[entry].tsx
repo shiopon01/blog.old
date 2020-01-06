@@ -160,7 +160,7 @@ const EntryPage: NextPage<any> = (props: any) => {
   };
 
   return (
-    <Layout title="Entry">
+    <Layout title={props.title}>
       <Grid container className={classes.container}>
         <article className={classes.article}>
           <section>
@@ -187,7 +187,7 @@ const EntryPage: NextPage<any> = (props: any) => {
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <ShareButtons url={"http://example.com"} />
+                <ShareButtons url={"https://blog.shiopon.net/entry/" + props.path} title={props.title} />
               </Grid>
             </Grid>
             {/* 画像 */}
@@ -216,7 +216,7 @@ const EntryPage: NextPage<any> = (props: any) => {
         <div className={classes.bottom}>
           <Grid container>
             <Grid item xs={12}>
-              <ShareButtons url={"http://example.com"} />
+              <ShareButtons url={"https://blog.shiopon.net/entry/" + props.path} title={props.title} />
             </Grid>
           </Grid>
         </div>
