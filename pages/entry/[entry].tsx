@@ -43,10 +43,10 @@ const useStyles = makeStyles(theme => ({
     // padding: "2rem",
     lineHeight: 1.58,
     [theme.breakpoints.down("xs")]: {
-      fontSize: 18
+      fontSize: 16
     },
     [theme.breakpoints.up("sm")]: {
-      fontSize: 21
+      fontSize: 18
     }
   },
   h1: {
