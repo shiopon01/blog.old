@@ -135,6 +135,11 @@ const PagePage: NextPage = (props: any) => {
 };
 
 PagePage.getInitialProps = async (req: any) => {
+  if (process.browser) {
+    // @ts-ignore
+    return __NEXT_DATA__.props.pageProps;
+  }
+
   const pid: string = req.query.pid as string;
   const articlesResp = await fetch(HOST + "/api/articles?page=" + pid);
   const countResp = await fetch(HOST + "/api/count/page");

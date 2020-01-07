@@ -226,6 +226,11 @@ const EntryPage: NextPage<any> = (props: any) => {
 };
 
 EntryPage.getInitialProps = async (req: any) => {
+  if (process.browser) {
+    // @ts-ignore
+    return __NEXT_DATA__.props.pageProps;
+  }
+
   const key: string = req.query.entry as string;
   const res = await fetch(HOST + "/api/articles/" + key);
   const data = await res.json();

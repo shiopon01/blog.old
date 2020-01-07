@@ -51,6 +51,11 @@ const IndexPage: NextPage = (props: any) => {
 };
 
 IndexPage.getInitialProps = async () => {
+  if (process.browser) {
+    // @ts-ignore
+    return __NEXT_DATA__.props.pageProps;
+  }
+
   const response = await fetch(HOST + "/api/articles?page=1");
   const result = await response.json();
   return { articles: result.articles };
