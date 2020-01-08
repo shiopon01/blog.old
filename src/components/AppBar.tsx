@@ -1,13 +1,11 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Link from "next/link";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
-  title: {
-    cursor: "pointer"
+  logo: {
+    // cursor: "pointer"
   }
 }));
 
@@ -18,11 +16,9 @@ const MyAppBar = () => {
     <React.Fragment>
       <AppBar>
         <Toolbar>
-          <Link href="/">
-            <Typography variant="h6" className={classes.title}>
-              SHIOPON BLOG
-            </Typography>
-          </Link>
+          <a href="/">
+            <img src="/favicon.ico" className={classes.logo} />
+          </a>
         </Toolbar>
       </AppBar>
       <Toolbar />
