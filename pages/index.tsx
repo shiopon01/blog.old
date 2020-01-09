@@ -1,6 +1,6 @@
 import * as React from "react";
 import fetch from "isomorphic-unfetch";
-import TopLayout from "../src/components/TopLayout";
+import Layout from "../src/components/Layout";
 import { NextPage } from "next";
 import { Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -26,7 +26,7 @@ const IndexPage: NextPage = (props: any) => {
   const classes = useStyles();
 
   return (
-    <TopLayout title="Home">
+    <Layout>
       <Header />
 
       <Grid container>
@@ -46,7 +46,7 @@ const IndexPage: NextPage = (props: any) => {
           </a>
         </div>
       </Grid>
-    </TopLayout>
+    </Layout>
   );
 };
 

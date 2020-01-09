@@ -4,7 +4,7 @@ import fetch from "isomorphic-unfetch";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography, CardHeader, Avatar } from "@material-ui/core";
 
-import Layout from "../../src/components/Layout";
+import NarrowLayout from "../../src/components/NarrowLayout";
 import ShareButtons from "../../src/components/ShareButtons";
 import ArticleBody from "../../src/components/ArticleBody";
 import { HOST } from "../../const";
@@ -49,7 +49,7 @@ const EntryPage: NextPage<any> = (props: any) => {
   const classes = useStyles();
 
   return (
-    <Layout title={props.title}>
+    <NarrowLayout title={props.title}>
       <Grid container className={classes.container}>
         <article className={classes.article}>
           <section>
@@ -101,7 +101,7 @@ const EntryPage: NextPage<any> = (props: any) => {
           </Grid>
         </div>
       </Grid>
-    </Layout>
+    </NarrowLayout>
   );
 };
 

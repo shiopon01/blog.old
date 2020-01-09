@@ -1,0 +1,11 @@
+ogp:
+  site_name: Shiopon Blog
+  url: https://blog.shiopon.net/
+  image: https://blog.shiopon.net/static/og.png
+  image_alt: https://blog.shiopon.net/static/icon.png
+  description: しおぽんのブログです。
+  fb_admins:
+  fb_app_id: 460496401307779
+  twitter_card: summary
+  twitter_site: @shiopon01
+  twitter_creator: @shiopon01

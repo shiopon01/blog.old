@@ -17,7 +17,7 @@ import {
   Avatar
 } from "@material-ui/core";
 
-import TopLayout from "../../src/components/TopLayout";
+import Layout from "../../src/components/Layout";
 import Paginate from "../../src/components/Paginate";
 import { HOST } from "../../const";
 
@@ -108,7 +108,7 @@ const PagePage: NextPage = (props: any) => {
   }
 
   return (
-    <TopLayout title={`Latest - Page ${pid}`}>
+    <Layout title={`Latest - Page ${pid}`}>
       <Container>
         <Grid container>
           <Grid item xs={12} md={8} className={classes.col}>
@@ -130,7 +130,7 @@ const PagePage: NextPage = (props: any) => {
         </Grid>
         <Paginate page={pid} max={props.count} />
       </Container>
-    </TopLayout>
+    </Layout>
   );
 };
 
