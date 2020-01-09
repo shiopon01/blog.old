@@ -49,7 +49,7 @@ const EntryPage: NextPage<any> = (props: any) => {
   const classes = useStyles();
 
   return (
-    <NarrowLayout title={props.title}>
+    <NarrowLayout title={props.title} path={"entry/" + props.path}>
       <Grid container className={classes.container}>
         <article className={classes.article}>
           <section>

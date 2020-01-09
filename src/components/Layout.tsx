@@ -14,14 +14,15 @@ const useStyles = makeStyles(() => ({
 }));
 
 type Props = {
-  title?: string;
-  pageType?: string;
+  type?: string; // "website" or "article"
+  title?: string; // article title
+  description?: string; // article description
+  path?: string; // page path "entry/2020-..."
 };
 
-const Layout: React.FC<Props> = ({ children, title = null, pageType = "website" }) => {
+const Layout: React.FC<Props> = ({ children, type = "website", title = null, description = null, path = null }) => {
   const classes = useStyles();
   const pageTitle = (title != null ? title + " - " : "") + "Shiopon Blog";
-  const pagePath = "";
 
   useEffect(() => {
     // @ts-ignore
@@ -36,14 +37,16 @@ const Layout: React.FC<Props> = ({ children, title = null, pageType = "website" 
   return (
     <div className={classes.wrapper}>
       <Head>
+        <link rel="stylesheet" href="/static/font.css" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <title>{pageTitle}</title>
         <meta property="og:title" content={pageTitle} />
         <meta property="og:site_name" content="Shiopon Blog" />
-        <meta property="og:type" content={pageType} />
-        <meta property="og:url" content={"https://blog.shiopon.net/" + pagePath} />
+        <meta property="og:type" content={type} />
+        <meta property="og:url" content={"https://blog.shiopon.net/" + path} />
         <meta property="og:image" content="https://blog.shiopon.net/static/og.png" />
-        <meta property="og:image:alt" content="https://blog.shiopon.net/static/icon.png" />
-        <meta property="og:description" content="しおぽんのブログです。" />
+        <meta property="og:image:alt" content={pageTitle} />
+        <meta property="og:description" content={description || "しおぽんのブログです。"} />
         <meta property="fb:app_id" content="460496401307779" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@shiopon01" />
