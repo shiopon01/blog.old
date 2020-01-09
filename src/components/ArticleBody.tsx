@@ -74,7 +74,8 @@ const useStyles = makeStyles(theme => ({
   },
   blockquote: {
     boxShadow: "inset 3px 0 0 0 rgba(0, 0, 0, 0.84)",
-    margin: "18px 18px 18px 0px"
+    margin: "18px 18px 18px 0px",
+    paddingLeft: 18
   }
 }));
 
