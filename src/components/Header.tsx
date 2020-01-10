@@ -6,39 +6,27 @@ const useStyles = makeStyles(theme => ({
   center: {
     textAlign: "center"
   },
-  positionCenter: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translateY(-50%) translateX(-50%)"
-  },
   overlay: {
     position: "absolute",
     top: 0,
     bottom: 0,
     right: 0,
     left: 0,
-    backgroundColor: "rgba(0,0,0,.3)"
+    backgroundColor: "rgba(0,0,0,0)"
   },
   mainFeaturedPost: {
     position: "relative",
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    // backgroundImage: "url(https://source.unsplash.com/user/erondu)",
-    backgroundSize: "cover",
+    backgroundImage: "url(/logo.png)",
+    // backgroundSize: "cover",
+    backgroundSize: "70%",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     height: 500,
     [theme.breakpoints.down("xs")]: {
       height: 300
-    }
-  },
-  mainFeaturedPostContent: {
-    position: "relative",
-    padding: theme.spacing(3),
-    [theme.breakpoints.up("md")]: {
-      padding: theme.spacing(6)
     }
   },
   mainBottom: {
@@ -59,15 +47,6 @@ export default function Header() {
     <React.Fragment>
       <Paper className={classes.mainFeaturedPost}>
         <div className={classes.overlay} />
-        <Grid container className={classes.positionCenter}>
-          <Grid item xs={12}>
-            <div className={classes.mainFeaturedPostContent}>
-              <Typography component="h1" variant="h3" color="inherit" align="center" gutterBottom>
-                SHIOPON BLOG 👋
-              </Typography>
-            </div>
-          </Grid>
-        </Grid>
         <div className={classes.mainBottom}>
           <Grid container alignItems="center" justify="center" className={classes.bottomMenu}>
             <Grid item xs={10}>

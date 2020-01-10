@@ -55,8 +55,8 @@ const LatestStories: React.FC<Props> = ({ articles }) => {
                   <Typography variant="subtitle1" paragraph>
                     {article.subtitle}
                   </Typography>
-                  <Typography variant="subtitle1" color="primary">
-                    Continue reading...
+                  <Typography variant="body2" color="textSecondary">
+                    Read more...
                   </Typography>
                 </CardContent>
               </div>
@@ -81,8 +81,8 @@ const LatestStories: React.FC<Props> = ({ articles }) => {
                 <Typography variant="subtitle1" paragraph>
                   {article.subtitle}
                 </Typography>
-                <Typography variant="subtitle1" color="primary">
-                  Continue reading...
+                <Typography variant="body2" color="textSecondary">
+                  Read more...
                 </Typography>
               </CardContent>
               {/* </div> */}

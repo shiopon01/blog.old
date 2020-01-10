@@ -20,7 +20,7 @@ const MyAppBar = () => {
       <AppBar classes={{root: classes.appbar}}>
         <Toolbar>
           <a href="/">
-            <img src="/favicon.ico" className={classes.logo} />
+            <img src="/logo.png" className={classes.logo} />
           </a>
         </Toolbar>
       </AppBar>
