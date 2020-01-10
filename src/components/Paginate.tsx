@@ -5,6 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(() => ({
   paginate: {
     marginTop: 40
+  },
+  center: {
+    textAlign: "center"
   }
 }));
 
@@ -18,7 +21,7 @@ const Paginate = (props: any) => {
 
   return (
     <Grid container alignItems="center" justify="center" className={classes.paginate}>
-      <Grid item md={4}>
+      <Grid item md={4} className={classes.center}>
         {1 < props.page && (
           <a href={"/page/" + (Number(props.page) - 1)}>
             <Button variant="contained">←</Button>
@@ -30,7 +33,7 @@ const Paginate = (props: any) => {
           {list}
         </Typography>
       </Grid>
-      <Grid item md={4}>
+      <Grid item md={4} className={classes.center}>
         {props.page < props.max && (
           <a href={"/page/" + (Number(props.page) + 1)}>
             <Button variant="contained">→</Button>

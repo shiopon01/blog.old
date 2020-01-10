@@ -3,6 +3,15 @@ import { Paper, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
+  center: {
+    textAlign: "center"
+  },
+  positionCenter: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translateY(-50%) translateX(-50%)"
+  },
   overlay: {
     position: "absolute",
     top: 0,
@@ -16,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: "url(https://source.unsplash.com/user/erondu)",
+    // backgroundImage: "url(https://source.unsplash.com/user/erondu)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
@@ -29,8 +38,7 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
     padding: theme.spacing(3),
     [theme.breakpoints.up("md")]: {
-      padding: theme.spacing(6),
-      paddingRight: 0
+      padding: theme.spacing(6)
     }
   },
   mainBottom: {
@@ -51,7 +59,7 @@ export default function Header() {
     <React.Fragment>
       <Paper className={classes.mainFeaturedPost}>
         <div className={classes.overlay} />
-        <Grid container>
+        <Grid container className={classes.positionCenter}>
           <Grid item xs={12}>
             <div className={classes.mainFeaturedPostContent}>
               <Typography component="h1" variant="h3" color="inherit" align="center" gutterBottom>
@@ -64,10 +72,18 @@ export default function Header() {
           <Grid container alignItems="center" justify="center" className={classes.bottomMenu}>
             <Grid item xs={10}>
               <Grid container>
-                <Grid item xs={3}><Typography color="inherit">SHIOPON BLOG</Typography></Grid>
-                <Grid item xs={3}><Typography color="inherit">SHIOPON BLOG</Typography></Grid>
-                <Grid item xs={3}><Typography color="inherit">SHIOPON BLOG</Typography></Grid>
-                <Grid item xs={3}><Typography color="inherit">SHIOPON BLOG</Typography></Grid>
+                <Grid item xs={3} className={classes.center}>
+                  <Typography color="inherit">SHIOPON BLOG</Typography>
+                </Grid>
+                <Grid item xs={3} className={classes.center}>
+                  <Typography color="inherit">SHIOPON BLOG</Typography>
+                </Grid>
+                <Grid item xs={3} className={classes.center}>
+                  <Typography color="inherit">SHIOPON BLOG</Typography>
+                </Grid>
+                <Grid item xs={3} className={classes.center}>
+                  <Typography color="inherit">SHIOPON BLOG</Typography>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>

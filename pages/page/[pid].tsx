@@ -12,8 +12,6 @@ import {
   CardHeader,
   CardContent,
   CardMedia,
-  CardActions,
-  Button,
   Avatar
 } from "@material-ui/core";
 
@@ -22,6 +20,9 @@ import Paginate from "../../src/components/Paginate";
 import { HOST } from "../../const";
 
 const useStyles = makeStyles(theme => ({
+  container: {
+    margin: "40px 0px"
+  },
   cardDetails: {
     flex: 1
   },
@@ -94,22 +95,14 @@ const PagePage: NextPage = (props: any) => {
               </CardContent>
             </CardActionArea>
           </a>
-          <CardActions>
-            <Button size="small" color="primary">
-              Share
-            </Button>
-            <Button size="small" color="primary">
-              Learn More
-            </Button>
-          </CardActions>
         </Card>
       </Grid>
     );
   }
 
   return (
-    <Layout title={`Latest - Page ${pid}`}>
-      <Container>
+    <Layout title={`Page ${pid}`}>
+      <Container className={classes.container}>
         <Grid container>
           <Grid item xs={12} md={8} className={classes.col}>
             <Typography variant="h6" gutterBottom className={classes.title}>
