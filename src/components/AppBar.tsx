@@ -4,8 +4,11 @@ import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
+  appbar: {
+    backgroundColor: "#fff"
+  },
   logo: {
-    // cursor: "pointer"
+    // TODO:
   }
 }));
 
@@ -13,8 +16,8 @@ const MyAppBar = () => {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
-      <AppBar>
+    <>
+      <AppBar classes={{root: classes.appbar}}>
         <Toolbar>
           <a href="/">
             <img src="/favicon.ico" className={classes.logo} />
@@ -22,7 +25,7 @@ const MyAppBar = () => {
         </Toolbar>
       </AppBar>
       <Toolbar />
-    </React.Fragment>
+    </>
   );
 };
 

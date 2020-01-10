@@ -150,7 +150,7 @@ const CodeBlock: React.FC<Props> = ({ source }) => {
       <SyntaxHighlighter
         language={props.language}
         style={prism}
-        customStyle={{ "marginTop": "56px", "marginBottom": "0px" }}
+        customStyle={{ marginTop: "56px", marginBottom: "0px" }}
       >
         {props.value}
       </SyntaxHighlighter>
@@ -163,8 +163,25 @@ const CodeBlock: React.FC<Props> = ({ source }) => {
   };
 
   const Blockquote = (props: any) => {
-    console.log("props", props.children)
     return <blockquote className={classes.blockquote}>{props.children}</blockquote>;
+  };
+
+  const LinkReference = (props: any) => {
+    if (props.href != "") {
+      return <a href={props.href}>{props.children[0].props.value}</a>;
+    }
+
+    return (
+      <iframe
+        className="hatenablogcard"
+        style={{ width: "100%", height: 155, maxWidth: 500, border: 0 }}
+        title={props.children[0].props.value}
+        src={"https://hatenablog-parts.com/embed?url=" + props.children[0].props.value}
+        width="300"
+        height="155"
+        scrolling="no"
+      ></iframe>
+    );
   };
 
   return (
@@ -178,7 +195,8 @@ const CodeBlock: React.FC<Props> = ({ source }) => {
         listItem: ListItem,
         code: CodeBlock,
         thematicBreak: ThematicBreak,
-        blockquote: Blockquote
+        blockquote: Blockquote,
+        linkReference: LinkReference
       }}
     ></ReactMarkdown>
   );

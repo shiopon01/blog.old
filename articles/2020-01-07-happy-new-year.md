@@ -58,8 +58,8 @@ Evernoteはなんだかんだずっと使ってます。移行先は常に探し
 
 2020年1月1日以降に読んだ本を管理するのに読書メーターを使い始めました。
 
-[https://bookmeter.com/users/1080819:embed:cite]
+[https://bookmeter.com/users/1080819]
 
 似たようなサービスで、観た映画を管理するのにFilmarksを使い始めました。
 
-[https://filmarks.com/users/shiopon01:embed:cite]
+[https://filmarks.com/users/shiopon01]
