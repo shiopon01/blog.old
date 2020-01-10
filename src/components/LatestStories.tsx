@@ -66,7 +66,7 @@ const LatestStories: React.FC<Props> = ({ articles }) => {
       );
     } else {
       list.push(
-        <Grid item key={article.title} xs={6} md={4}>
+        <Grid item key={article.title} xs={12} sm={6} md={4}>
           <Card className={classes.card}>
             <CardActionArea component="a" href={"/entry/" + article.path}>
               <CardMedia className={classes.cardMedia} image={article.image} title="Image title" />

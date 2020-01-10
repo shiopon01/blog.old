@@ -68,7 +68,7 @@ const EntryPage: NextPage<any> = (props: any) => {
             </Grid>
             {/* 投稿者情報 */}
             <Grid container>
-              <Grid item xs={6} sm={6}>
+              <Grid item xs={12} sm={6}>
                 <CardHeader
                   classes={{ title: classes.header, subheader: classes.header }}
                   avatar={
