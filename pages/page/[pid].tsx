@@ -21,7 +21,10 @@ import { HOST } from "../../const";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    margin: "40px 0px"
+    maxWidth: 1032,
+    margin: "40px 0px",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
   cardDetails: {
     flex: 1

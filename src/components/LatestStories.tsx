@@ -3,6 +3,11 @@ import { Typography, Grid, CardActionArea, Card, CardContent, Divider, CardMedia
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
+  container: {
+    maxWidth: 1032,
+    marginLeft: "auto",
+    marginRight: "auto"
+  },
   title: {
     padding: "0 20px"
   },
@@ -66,7 +71,7 @@ const LatestStories: React.FC<Props> = ({ articles }) => {
       );
     } else {
       list.push(
-        <Grid item key={article.title} xs={12} sm={6} md={4}>
+        <Grid item key={article.title} xs={12} sm={4}>
           <Card className={classes.card}>
             <CardActionArea component="a" href={"/entry/" + article.path}>
               <CardMedia className={classes.cardMedia} image={article.image} title="Image title" />
@@ -94,7 +99,7 @@ const LatestStories: React.FC<Props> = ({ articles }) => {
   }
 
   return (
-    <Grid container>
+    <Grid container className={classes.container}>
       <Grid item xs={12} className={classes.title}>
         <Typography variant="h6" gutterBottom>
           Latest articles

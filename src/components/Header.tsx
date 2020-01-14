@@ -52,16 +52,16 @@ export default function Header() {
             <Grid item xs={10}>
               <Grid container>
                 <Grid item xs={3} className={classes.center}>
-                  <Typography color="inherit">SHIOPON BLOG</Typography>
+                  <Typography color="inherit">なんか</Typography>
                 </Grid>
                 <Grid item xs={3} className={classes.center}>
-                  <Typography color="inherit">SHIOPON BLOG</Typography>
+                  <Typography color="inherit">いいかんじの</Typography>
                 </Grid>
                 <Grid item xs={3} className={classes.center}>
-                  <Typography color="inherit">SHIOPON BLOG</Typography>
+                  <Typography color="inherit">コンテンツの</Typography>
                 </Grid>
                 <Grid item xs={3} className={classes.center}>
-                  <Typography color="inherit">SHIOPON BLOG</Typography>
+                  <Typography color="inherit">リンク</Typography>
                 </Grid>
               </Grid>
             </Grid>

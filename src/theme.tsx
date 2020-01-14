@@ -5,9 +5,9 @@ import red from "@material-ui/core/colors/red";
 const theme = createMuiTheme({
   breakpoints: {
     values: {
-      xs: 0,
+      xs: 0,   // 0 〜 727
       sm: 728, // 600 → 728
-      md: 765, // 960 → 765
+      md: 904, // 960 → 904
       lg: 1280,
       xl: 1920,
     },

@@ -28,15 +28,11 @@ const IndexPage: NextPage = (props: any) => {
   return (
     <Layout>
       <Header />
-
       <Grid container>
-        <Grid item xs={false} sm={1}></Grid>
-        <Grid item xs={12} sm={10}>
+        <Grid item xs={12}>
           <LatestStories articles={props.articles} />
         </Grid>
-        <Grid item xs={false} sm={1}></Grid>
       </Grid>
-
       <Grid container alignItems="center" justify="center">
         <div className={classes.parent}>
           <a href={"/page/1"}>
