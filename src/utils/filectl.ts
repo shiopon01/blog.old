@@ -56,7 +56,7 @@ const fileDetailObject = (dir: string, filename: string) => {
     createdAt: details.publishedOn || createdAt, // 削除予定
     updatedAt: details.updatedOn || updatedAt, // 削除予定
     minuts: details.minuts,
-    image: details.minuts || "/static/noimage.jpg",
+    image: details.image ? "/static/images/" + details.image : null,
     body: details.body
   };
 };

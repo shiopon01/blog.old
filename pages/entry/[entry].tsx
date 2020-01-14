@@ -4,7 +4,7 @@ import fetch from "isomorphic-unfetch";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography, CardHeader, Avatar } from "@material-ui/core";
 
-import NarrowLayout from "../../src/components/NarrowLayout";
+import Layout from "../../src/components/Layout";
 import ShareButtons from "../../src/components/ShareButtons";
 import ArticleBody from "../../src/components/ArticleBody";
 import { HOST } from "../../const";
@@ -49,10 +49,10 @@ const EntryPage: NextPage<any> = (props: any) => {
   const classes = useStyles();
 
   return (
-    <NarrowLayout
+    <Layout
       type="article"
       title={props.title}
-      description={props.body.replace(/\r?\n/g, ' ').slice(0, 300) + (props.body.length > 300 ? "…" : "")}
+      description={props.body.replace(/\r?\n/g, " ").slice(0, 300) + (props.body.length > 300 ? "…" : "")}
       path={"entry/" + props.path}
     >
       <Grid container className={classes.container}>
@@ -85,11 +85,13 @@ const EntryPage: NextPage<any> = (props: any) => {
               </Grid>
             </Grid>
             {/* 画像 */}
-            {/* <Grid container>
-              <Grid item xs={12}>
-                <img src={props.image} className={classes.headerImage} />
+            {props.image != null && (
+              <Grid container>
+                <Grid item xs={12}>
+                  <img src={props.image} className={classes.headerImage} />
+                </Grid>
               </Grid>
-            </Grid> */}
+            )}
             {/* 記事 */}
             <Grid container>
               <Grid item xs={12}>
@@ -106,7 +108,7 @@ const EntryPage: NextPage<any> = (props: any) => {
           </Grid>
         </div>
       </Grid>
-    </NarrowLayout>
+    </Layout>
   );
 };
 

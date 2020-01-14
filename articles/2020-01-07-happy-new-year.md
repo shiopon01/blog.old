@@ -5,6 +5,7 @@ publishedOn: 2020-01-07
 updatedOn: 2020-01-07
 minutes: 2
 tags: よもやま話
+image: mochi.jpg
 ---
 
 明けましておめでとうございます。

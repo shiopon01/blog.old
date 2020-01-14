@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Typography, Grid, CardActionArea, Card, CardContent, Divider, CardMedia } from "@material-ui/core";
+import { Typography, Grid, Card, CardContent, Divider, CardMedia } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   container: {
     maxWidth: 1032,
     marginLeft: "auto",
@@ -14,11 +14,11 @@ const useStyles = makeStyles(() => ({
   articles: {
     marginTop: 10
   },
-  card: {
-    display: "flex"
-  },
-  cardDetails: {
-    flex: 1
+  flex: {
+    [theme.breakpoints.down("xs")]: {},
+    [theme.breakpoints.up("sm")]: {
+      display: "flex"
+    }
   },
   cardMedia: {
     height: 160
@@ -28,7 +28,17 @@ const useStyles = makeStyles(() => ({
     borderBottom: "1px solid rgba(0,0,0,.0785) !important"
   },
   topCardMedia: {
-    width: "50%"
+    [theme.breakpoints.down("xs")]: {
+      height: 160
+    },
+    [theme.breakpoints.up("sm")]: {
+      width: "50%",
+      maxHeight: 400
+    }
+  },
+  img: {
+    width: "100%",
+    height: "100%"
   }
 }));
 
@@ -42,57 +52,48 @@ const LatestStories: React.FC<Props> = ({ articles }) => {
   let isFirst = true;
   const list = [];
   for (const article of articles) {
+    const cardContent = (
+      <CardContent>
+        <Typography component="h2" variant="h5">
+          {article.title}
+        </Typography>
+        <Typography variant="subtitle1" color="textSecondary">
+          {article.createdAt}
+        </Typography>
+        <Typography variant="subtitle1" paragraph>
+          {article.subtitle}
+        </Typography>
+        <Typography variant="body2" color="textSecondary">
+          Read more...
+        </Typography>
+      </CardContent>
+    );
+
     if (isFirst) {
       isFirst = false;
       list.push(
         <Grid item key={article.title} xs={12}>
-          <CardActionArea component="a" href={"/entry/" + article.path}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.topCardMedia} image={article.image} />
-              <div className={classes.cardDetails}>
-                <CardContent>
-                  <Typography component="h2" variant="h5">
-                    {article.title}
-                  </Typography>
-                  <Typography variant="subtitle1" color="textSecondary">
-                    {article.createdAt}
-                  </Typography>
-                  <Typography variant="subtitle1" paragraph>
-                    {article.subtitle}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    Read more...
-                  </Typography>
-                </CardContent>
+          <a href={"/entry/" + article.path} style={{ textDecoration: "none" }}>
+            <Card className={classes.flex}>
+              <div className={classes.topCardMedia}>
+                <CardMedia component="img" className={classes.img} image={article.image || "/static/noimage.jpg"} />
               </div>
+              {cardContent}
             </Card>
-          </CardActionArea>
+          </a>
         </Grid>
       );
     } else {
       list.push(
         <Grid item key={article.title} xs={12} sm={4}>
-          <Card className={classes.card}>
-            <CardActionArea component="a" href={"/entry/" + article.path}>
-              <CardMedia className={classes.cardMedia} image={article.image} title="Image title" />
-              {/* <div className={classes.cardDetails}> */}
-              <CardContent>
-                <Typography component="h2" variant="h5">
-                  {article.title}
-                </Typography>
-                <Typography variant="subtitle1" color="textSecondary">
-                  {article.createdAt}
-                </Typography>
-                <Typography variant="subtitle1" paragraph>
-                  {article.subtitle}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  Read more...
-                </Typography>
-              </CardContent>
-              {/* </div> */}
-            </CardActionArea>
-          </Card>
+          <a href={"/entry/" + article.path} style={{ textDecoration: "none" }}>
+            <Card>
+              <div className={classes.cardMedia}>
+                <CardMedia component="img" className={classes.img} image={article.image || "/static/noimage.jpg"} />
+              </div>
+              {cardContent}
+            </Card>
+          </a>
         </Grid>
       );
     }
