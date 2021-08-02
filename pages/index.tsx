@@ -33,7 +33,7 @@ const IndexPage: NextPage = (props: any) => {
           <LatestStories articles={props.articles} />
         </Grid>
       </Grid>
-      <Grid container alignItems="center" justify="center">
+      <Grid container alignItems="center" justifyContent="center">
         <div className={classes.parent}>
           <a href={"/page/1"}>
             <Button variant="contained" className={classes.inner}>

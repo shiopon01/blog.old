@@ -48,7 +48,7 @@ export default function Header() {
       <Paper className={classes.mainFeaturedPost}>
         <div className={classes.overlay} />
         <div className={classes.mainBottom}>
-          <Grid container alignItems="center" justify="center" className={classes.bottomMenu}>
+          <Grid container alignItems="center" justifyContent="center" className={classes.bottomMenu}>
             <Grid item xs={10}>
               <Grid container>
                 <Grid item xs={3} className={classes.center}>

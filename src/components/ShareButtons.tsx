@@ -43,7 +43,7 @@ const ShareButtons: React.FC<Props> = ({ url, title }) => {
       <Head>
         <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"></script>
       </Head>
-      <Grid container alignItems="center" justify="center" className={classes.height}>
+      <Grid container alignItems="center" justifyContent="center" className={classes.height}>
         <Grid item xs={12}>
           <div className={classes.center}>
             <span className={classes.span}>

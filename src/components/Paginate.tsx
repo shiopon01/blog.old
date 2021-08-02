@@ -20,7 +20,7 @@ const Paginate = (props: any) => {
   }
 
   return (
-    <Grid container alignItems="center" justify="center" className={classes.paginate}>
+    <Grid container alignItems="center" ="center" className={classes.paginate}>
       <Grid item md={4} className={classes.center}>
         {1 < props.page && (
           <a href={"/page/" + (Number(props.page) - 1)}>
