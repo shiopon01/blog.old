@@ -13,6 +13,8 @@ jobs:
         - master
     steps:
       - checkout
+      - run: npm config set prefix '$HOME/.npm-global/'
+      - run: npm install -g typesync
       - run: git config user.name "shiopon01+circleci"
       - run: git config user.email "shio.0323+circleci@gmail.com"
       - restore_cache:
